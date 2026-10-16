@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kreatif - Kelas XI DKV 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0f1020',
+                        brandCard: '#181b33',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-glow-1 {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .bg-glow-2 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.3);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-gray-100 min-h-screen relative overflow-x-hidden font-sans">
+
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-glow-1 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-glow-2 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brandDark/80 border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                    <i class="fa-solid fa-palette text-white text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-heading font-extrabold text-xl tracking-wide text-white">DKV <span class="text-gradient">PORTAL</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Kelas XI DKV • Tahun 2026</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="dashboard.html" class="text-pink-400 font-semibold flex items-center gap-2"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="siswa.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-users"></i> Data Siswa</a>
+                <a href="nilai.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> Rekap Nilai</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <a href="siswa.html" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-sm shadow-lg shadow-pink-500/25 hover:opacity-95 transition">
+                    <i class="fa-solid fa-user-graduate mr-2"></i> Profil Kelas
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+        
+        <!-- Hero Banner Section -->
+        <section class="mb-12 bg-gradient-to-r from-purple-900/40 via-indigo-900/30 to-pink-900/40 border border-purple-500/20 rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="max-w-2xl relative z-10">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span> Showcase Kreatif & Inovasi Siswa
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4 leading-tight">
+                    Eksplorasi Karya Seni & <span class="text-gradient">Desain Visual</span>
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-base mb-8 leading-relaxed">
+                    Selamat datang di pusat galeri digital Kelas XI Desain Komunikasi Visual tahun 2026. Temukan portofolio produk kreatif, proyek kolaboratif, serta manajemen data akademik yang terintegrasi.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="nilai.html" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 hover:opacity-95 transition flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie"></i> Lihat Rekap Nilai
+                    </a>
+                    <a href="siswa.html" class="px-6 py-3 rounded-xl bg-brandCard border border-gray-700 text-gray-200 font-semibold text-sm hover:bg-gray-800 transition flex items-center gap-2">
+                        <i class="fa-solid fa-address-book"></i> Daftar Anggota Kelas
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Katalog Produk Kreatif (1 - 6) -->
+        <section class="mb-14">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="font-heading font-bold text-2xl text-white flex items-center gap-3">
+                        <span class="w-3 h-8 bg-pink-500 rounded-full inline-block"></span>
+                        Katalog Produk Kreatif
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1">Hasil karya produk digital dan cetak mandiri siswa-siswi DKV</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-gray-800 rounded-lg text-gray-400 border border-gray-700">6 Produk Aktif</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Produk 1 -->
+                <a href="produk1.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-xl group-hover:bg-pink-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-pink-400 uppercase tracking-wider">Kategori Desain</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-pink-300 transition">Produk 1: Merchandise & Apparel</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Desain kaos, hoodie, dan atribut merchandise eksklusif bertema identitas visual.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-pink-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+
+                <!-- Produk 2 -->
+                <a href="produk2.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-xl group-hover:bg-purple-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-purple-400 uppercase tracking-wider">Kategori Cetak</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-purple-300 transition">Produk 2: Ilustrasi & Zine</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Kumpulan komik pendek, majalah indie, serta buku ilustrasi kreatif buatan tangan.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-purple-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+
+                <!-- Produk 3 -->
+                <a href="produk3.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Kategori Kemasan</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-blue-300 transition">Produk 3: Packaging Design</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Perancangan struktur kemasan produk makanan, minuman, dan produk lokal berstandar komersial.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+
+                <!-- Produk 4 -->
+                <a href="produk4.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-xl group-hover:bg-teal-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-teal-400 uppercase tracking-wider">Kategori Branding</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-teal-300 transition">Produk 4: Brand Identity & Logo</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Paket identitas visual perusahaan rintisan termasuk logo, panduan merek, dan alat tulis kantor.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-teal-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+
+                <!-- Produk 5 -->
+                <a href="produk5.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-xl group-hover:bg-amber-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Kategori Media</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-amber-300 transition">Produk 5: Fotografi & Videografi</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Koleksi foto komersial produk, sinematografi pendek, dan video promosi media sosial.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-amber-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+
+                <!-- Produk 6 -->
+                <a href="produk6.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/5 rounded-full blur-xl group-hover:bg-rose-500/15 transition"></div>
+                    <div class="w-14 h-14 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-display"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-rose-400 uppercase tracking-wider">Kategori Interaktif</span>
+                    <h4 class="font-heading font-bold text-lg text-white mt-1 mb-2 group-hover:text-rose-300 transition">Produk 6: UI/UX & Motion Graphic</h4>
+                    <p class="text-sm text-gray-400 mb-4 line-clamp-2">Desain antarmuka aplikasi seluler, website interaktif, serta animasi motion grafis modern.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-rose-400 group-hover:translate-x-1 transition">
+                        Buka Detail Produk <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section: Proyek Kolaborasi (1 - 3) -->
+        <section class="mb-14">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="font-heading font-bold text-2xl text-white flex items-center gap-3">
+                        <span class="w-3 h-8 bg-indigo-500 rounded-full inline-block"></span>
+                        Proyek Kolaborasi Tim
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1">Dokumentasi pengerjaan proyek besar lintas kelompok kelas</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-gray-800 rounded-lg text-gray-400 border border-gray-700">3 Proyek Utama</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <a href="project1.html" class="card-hover bg-gradient-to-br from-brandCard to-indigo-950/40 border border-indigo-500/20 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Tim Alpha</span>
+                        <i class="fa-solid fa-diagram-project text-indigo-400 text-xl"></i>
+                    </div>
+                    <h4 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-indigo-300 transition">Project 1: Pameran Seni Virtual</h4>
+                    <p class="text-sm text-gray-400 mb-6">Galeri pameran karya akhir semester berbasis web interaktif 3D.</p>
+                    <div class="flex items-center justify-between text-xs font-medium text-indigo-400 pt-4 border-t border-gray-800">
+                        <span>Lihat Dokumentasi</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="project2.html" class="card-hover bg-gradient-to-br from-brandCard to-purple-950/40 border border-purple-500/20 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">Tim Beta</span>
+                        <i class="fa-solid fa-rocket text-purple-400 text-xl"></i>
+                    </div>
+                    <h4 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-purple-300 transition">Project 2: Kampanye Sosial Publik</h4>
+                    <p class="text-sm text-gray-400 mb-6">Kampanye kesadaran lingkungan lewat poster luar ruang dan video reels.</p>
+                    <div class="flex items-center justify-between text-xs font-medium text-purple-400 pt-4 border-t border-gray-800">
+                        <span>Lihat Dokumentasi</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="project3.html" class="card-hover bg-gradient-to-br from-brandCard to-pink-950/40 border border-pink-500/20 rounded-2xl p-6 block group relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30">Tim Gamma</span>
+                        <i class="fa-solid fa-lightbulb text-pink-400 text-xl"></i>
+                    </div>
+                    <h4 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-pink-300 transition">Project 3: Brand UMKM Lokal</h4>
+                    <p class="text-sm text-gray-400 mb-6">Pendampingan penuh re-branding UMKM daerah mitra sekolah.</p>
+                    <div class="flex items-center justify-between text-xs font-medium text-pink-400 pt-4 border-t border-gray-800">
+                        <span>Lihat Dokumentasi</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section: Navigasi Cepat Siswa & Nilai -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Siswa Card -->
+            <a href="siswa.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 flex items-center justify-between group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-lg text-white group-hover:text-sky-300 transition">Database Siswa DKV</h4>
+                        <p class="text-sm text-gray-400">Daftar lengkap anggota kelas, struktur pengurus, & profil</p>
+                    </div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-gray-300 group-hover:bg-sky-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Nilai Card -->
+            <a href="nilai.html" class="card-hover bg-brandCard border border-gray-800 rounded-2xl p-6 flex items-center justify-between group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-clipboard-user"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-lg text-white group-hover:text-emerald-300 transition">Rekapitulasi Nilai</h4>
+                        <p class="text-sm text-gray-400">Transkrip nilai tugas, portofolio produk, dan ujian praktik</p>
+                    </div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-gray-300 group-hover:bg-emerald-500 group-hover:text-white transition">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 mt-20 py-8 text-center text-sm text-gray-500 bg-brandDark/50">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Kelas XI Desain Komunikasi Visual. All rights reserved.</p>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="dashboard.html" class="hover:text-white transition">Beranda</a>
+                <a href="siswa.html" class="hover:text-white transition">Siswa</a>
+                <a href="nilai.html" class="hover:text-white transition">Nilai</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
