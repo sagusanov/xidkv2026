@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Siswa - Kelas XI DKV 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0f1020',
+                        brandCard: '#181b33',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-glow-1 {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .bg-glow-2 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-gray-100 min-h-screen relative overflow-x-hidden font-sans">
+
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-glow-1 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-glow-2 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brandDark/80 border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                    <i class="fa-solid fa-palette text-white text-xl"></i>
+                </a>
+                <div>
+                    <h1 class="font-heading font-extrabold text-xl tracking-wide text-white">DKV <span class="text-gradient">PORTAL</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Database Siswa • Tahun 2026</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="siswa.html" class="text-pink-400 font-semibold flex items-center gap-2"><i class="fa-solid fa-users"></i> Data Siswa</a>
+                <a href="nilai.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> Rekap Nilai</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-brandCard border border-gray-700 text-gray-200 font-semibold text-sm hover:bg-gray-800 transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+        
+        <!-- Page Title Section -->
+        <section class="mb-10 text-center max-w-2xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30 mb-3">
+                <i class="fa-solid fa-users-rectangle"></i> Direktori Resmi Kelas
+            </span>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+                Daftar Anggota <span class="text-gradient">Kelas XI DKV</span>
+            </h2>
+            <p class="text-gray-400 text-sm sm:text-base">
+                Berikut adalah daftar nama peserta didik untuk kelas XI Desain Komunikasi Visual (DKV) 1, 2, dan 3 tahun ajaran 2026.
+            </p>
+        </section>
+
+        <!-- Tab Navigasi Kelas -->
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex p-1.5 bg-brandCard border border-gray-800 rounded-2xl gap-2">
+                <button onclick="switchTab('dkv1')" id="btn-dkv1" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/20">
+                    XI DKV 1 (36 Siswa)
+                </button>
+                <button onclick="switchTab('dkv2')" id="btn-dkv2" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white">
+                    XI DKV 2 (35 Siswa)
+                </button>
+                <button onclick="switchTab('dkv3')" id="btn-dkv3" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white">
+                    XI DKV 3 (35 Siswa)
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Container for Classes -->
+        
+        <!-- KELAS XI DKV 1 -->
+        <div id="content-dkv1" class="class-content">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                    <span class="w-2.5 h-6 bg-pink-500 rounded-full inline-block"></span>
+                    Daftar Siswa XI DKV 1
+                </h3>
+                <span class="text-xs font-semibold px-3 py-1 bg-brandCard rounded-lg text-pink-400 border border-gray-800">Total: 36 Siswa</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Data XI DKV 1 -->
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">1</div>
+                    <div class="text-sm font-medium text-gray-200">Aflach Hidayatus Sukriyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">2</div>
+                    <div class="text-sm font-medium text-gray-200">Ahmad Daffa Raditya</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">3</div>
+                    <div class="text-sm font-medium text-gray-200">Ainia Eka Rasyifa</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">4</div>
+                    <div class="text-sm font-medium text-gray-200">Aira Hanifatun Nisa</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">5</div>
+                    <div class="text-sm font-medium text-gray-200">Aira Zakyyah Alzahra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">6</div>
+                    <div class="text-sm font-medium text-gray-200">Aisah Rahmawati</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">7</div>
+                    <div class="text-sm font-medium text-gray-200">Aisyah Aminatus Zahra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">8</div>
+                    <div class="text-sm font-medium text-gray-200">Alfenia Tiz`a</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">9</div>
+                    <div class="text-sm font-medium text-gray-200">Alissiya Junita Anwar</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">10</div>
+                    <div class="text-sm font-medium text-gray-200">Aneira Huwaidah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">11</div>
+                    <div class="text-sm font-medium text-gray-200">Anggi Anggraini</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">12</div>
+                    <div class="text-sm font-medium text-gray-200">Arindra Putri Kamelia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">13</div>
+                    <div class="text-sm font-medium text-gray-200">Aulia Firdausi Nuzula</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">14</div>
+                    <div class="text-sm font-medium text-gray-200">Aulia Ul Maghfiroh</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">15</div>
+                    <div class="text-sm font-medium text-gray-200">Aulia Zahra Firdausi</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">16</div>
+                    <div class="text-sm font-medium text-gray-200">Ayudya Tri Wardhani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">17</div>
+                    <div class="text-sm font-medium text-gray-200">Berlian Shifa Salsabila</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">18</div>
+                    <div class="text-sm font-medium text-gray-200">Cantika Yasmin Az-Zahra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">19</div>
+                    <div class="text-sm font-medium text-gray-200">Chelsea Putisa Rizqiyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">20</div>
+                    <div class="text-sm font-medium text-gray-200">Choirul Azzam Muhammad</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">21</div>
+                    <div class="text-sm font-medium text-gray-200">Devi Lailatul Sari</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">22</div>
+                    <div class="text-sm font-medium text-gray-200">Defina Aulia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">23</div>
+                    <div class="text-sm font-medium text-gray-200">Dina Kurnia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">24</div>
+                    <div class="text-sm font-medium text-gray-200">Diva Irzil Febrian</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">25</div>
+                    <div class="text-sm font-medium text-gray-200">Dwi Ayu Oktavia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">26</div>
+                    <div class="text-sm font-medium text-gray-200">Dwi Putri Salsabillah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">27</div>
+                    <div class="text-sm font-medium text-gray-200">Dwi Ratna Anjani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">28</div>
+                    <div class="text-sm font-medium text-gray-200">Elang Raya Anugerah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">29</div>
+                    <div class="text-sm font-medium text-gray-200">Elin Amalyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">30</div>
+                    <div class="text-sm font-medium text-gray-200">Ezra Jodi Ziggy Saverio</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">31</div>
+                    <div class="text-sm font-medium text-gray-200">Fadhilah Rahmansah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">32</div>
+                    <div class="text-sm font-medium text-gray-200">Faisal Erdiansyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">33</div>
+                    <div class="text-sm font-medium text-gray-200">Imam Makhmudi</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">34</div>
+                    <div class="text-sm font-medium text-gray-200">Imanullah Machzae Al Fino</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">35</div>
+                    <div class="text-sm font-medium text-gray-200">M Harun Bahtiar Yahya</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 font-bold flex items-center justify-center shrink-0 text-sm border border-pink-500/20">36</div>
+                    <div class="text-sm font-medium text-gray-200">Moch. Alif Febrian</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KELAS XI DKV 2 -->
+        <div id="content-dkv2" class="class-content hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                    <span class="w-2.5 h-6 bg-purple-500 rounded-full inline-block"></span>
+                    Daftar Siswa XI DKV 2
+                </h3>
+                <span class="text-xs font-semibold px-3 py-1 bg-brandCard rounded-lg text-purple-400 border border-gray-800">Total: 35 Siswa</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Data XI DKV 2 -->
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">1</div>
+                    <div class="text-sm font-medium text-gray-200">Elisa Bela Eka Saputri</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">2</div>
+                    <div class="text-sm font-medium text-gray-200">Erina Salsabila</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">3</div>
+                    <div class="text-sm font-medium text-gray-200">Faza Arin Daffasta</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">4</div>
+                    <div class="text-sm font-medium text-gray-200">Fidatul Umrotin</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">5</div>
+                    <div class="text-sm font-medium text-gray-200">Fiesya Putri Salsabila</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">6</div>
+                    <div class="text-sm font-medium text-gray-200">Ika Kurnia Rahma</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">7</div>
+                    <div class="text-sm font-medium text-gray-200">Ika Putri Damayanti</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">8</div>
+                    <div class="text-sm font-medium text-gray-200">Indah Rahma Aprilia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">9</div>
+                    <div class="text-sm font-medium text-gray-200">Indri Rusdiana</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">10</div>
+                    <div class="text-sm font-medium text-gray-200">Istiqomatuzahro</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">11</div>
+                    <div class="text-sm font-medium text-gray-200">Kartika April Lita</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">12</div>
+                    <div class="text-sm font-medium text-gray-200">Khaisyafatur Rochima</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">13</div>
+                    <div class="text-sm font-medium text-gray-200">Khirana Putri Aprilia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">14</div>
+                    <div class="text-sm font-medium text-gray-200">Khoirun Nisa'</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">15</div>
+                    <div class="text-sm font-medium text-gray-200">Miftakhul Ula Fauziah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">16</div>
+                    <div class="text-sm font-medium text-gray-200">Mochammad Wildan Ar Rosyed</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">17</div>
+                    <div class="text-sm font-medium text-gray-200">Mohammad Raihan Fabiansyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">18</div>
+                    <div class="text-sm font-medium text-gray-200">Muchammad Rizky Ramadhani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">19</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Ergi Jauhari</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">20</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Hasby Wahyudi</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">21</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Oky Saputra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">22</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Rifqi Romadoni</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">23</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Sayyid Shobirin</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">24</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Sholihuddin</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">25</div>
+                    <div class="text-sm font-medium text-gray-200">Muhammad Subaktiar</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">26</div>
+                    <div class="text-sm font-medium text-gray-200">Myeisha Nafeeza Ayu Putri</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">27</div>
+                    <div class="text-sm font-medium text-gray-200">Nabila Carissa Putri</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">28</div>
+                    <div class="text-sm font-medium text-gray-200">Nadila Vega Risqiyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">29</div>
+                    <div class="text-sm font-medium text-gray-200">Najmatuz Zahiroh</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">30</div>
+                    <div class="text-sm font-medium text-gray-200">Najwa Dwi Silvia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">31</div>
+                    <div class="text-sm font-medium text-gray-200">Nasifah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">32</div>
+                    <div class="text-sm font-medium text-gray-200">Nawal Sakinah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">33</div>
+                    <div class="text-sm font-medium text-gray-200">Nazwa Aisya Kina</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">34</div>
+                    <div class="text-sm font-medium text-gray-200">Nazwa Aulia Farani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 font-bold flex items-center justify-center shrink-0 text-sm border border-purple-500/20">35</div>
+                    <div class="text-sm font-medium text-gray-200">Nindya Ayu Fadhila</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KELAS XI DKV 3 -->
+        <div id="content-dkv3" class="class-content hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                    <span class="w-2.5 h-6 bg-blue-500 rounded-full inline-block"></span>
+                    Daftar Siswa XI DKV 3
+                </h3>
+                <span class="text-xs font-semibold px-3 py-1 bg-brandCard rounded-lg text-blue-400 border border-gray-800">Total: 35 Siswa</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Data XI DKV 3 -->
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">1</div>
+                    <div class="text-sm font-medium text-gray-200">Mukhammad Abdur Rochim</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">2</div>
+                    <div class="text-sm font-medium text-gray-200">Naufal Dzi Wafrah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">3</div>
+                    <div class="text-sm font-medium text-gray-200">Nova Amellya</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">4</div>
+                    <div class="text-sm font-medium text-gray-200">Novika Salsabila</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">5</div>
+                    <div class="text-sm font-medium text-gray-200">Nublatun Naufilah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">6</div>
+                    <div class="text-sm font-medium text-gray-200">Nurid Dalilatul Marufah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">7</div>
+                    <div class="text-sm font-medium text-gray-200">Qaidah Zerlina Alva</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">8</div>
+                    <div class="text-sm font-medium text-gray-200">Raindy Aditya Saputra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">9</div>
+                    <div class="text-sm font-medium text-gray-200">Rania Azka Putri</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">10</div>
+                    <div class="text-sm font-medium text-gray-200">Rifat Ahmad Rafael Maulana P</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">11</div>
+                    <div class="text-sm font-medium text-gray-200">Rizky Amelia</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">12</div>
+                    <div class="text-sm font-medium text-gray-200">Safina Amelia Dewi</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">13</div>
+                    <div class="text-sm font-medium text-gray-200">Safira Nabilatun Nazwa</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">14</div>
+                    <div class="text-sm font-medium text-gray-200">Salsabilatuzzahro</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">15</div>
+                    <div class="text-sm font-medium text-gray-200">Sava Sarfana Romadhani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">16</div>
+                    <div class="text-sm font-medium text-gray-200">Shafira Aisyah Az-Zahra</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">17</div>
+                    <div class="text-sm font-medium text-gray-200">Shofiatul Khasanah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">18</div>
+                    <div class="text-sm font-medium text-gray-200">Siti Auliya Ulmukarromah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">19</div>
+                    <div class="text-sm font-medium text-gray-200">Siti Azizah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">20</div>
+                    <div class="text-sm font-medium text-gray-200">Siti Sundari Mulyani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">21</div>
+                    <div class="text-sm font-medium text-gray-200">Sultan Jalalludin Rummi</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">22</div>
+                    <div class="text-sm font-medium text-gray-200">Syafa' Putri Al Fairuz</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">23</div>
+                    <div class="text-sm font-medium text-gray-200">Talitha Nabiha Afrah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">24</div>
+                    <div class="text-sm font-medium text-gray-200">Trisnasari Pangestuningtyas</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">25</div>
+                    <div class="text-sm font-medium text-gray-200">Vera Feriska</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">26</div>
+                    <div class="text-sm font-medium text-gray-200">Vinza Putri Fasalsa</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">27</div>
+                    <div class="text-sm font-medium text-gray-200">Wahyu Sagaf Aries Dinata</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">28</div>
+                    <div class="text-sm font-medium text-gray-200">Wardatul Habibah Safarina</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">29</div>
+                    <div class="text-sm font-medium text-gray-200">Wardatul Karima Rahmadani</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">30</div>
+                    <div class="text-sm font-medium text-gray-200">Windi Cantika</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">31</div>
+                    <div class="text-sm font-medium text-gray-200">Yuniar Dwi Lafifah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">32</div>
+                    <div class="text-sm font-medium text-gray-200">Yusron Tito Ardiansyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">33</div>
+                    <div class="text-sm font-medium text-gray-200">Zainal Abidin</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">34</div>
+                    <div class="text-sm font-medium text-gray-200">Zakiyatul Lailiyah</div>
+                </div>
+                <div class="card-hover bg-brandCard border border-gray-800/80 rounded-xl p-4 flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 font-bold flex items-center justify-center shrink-0 text-sm border border-blue-500/20">35</div>
+                    <div class="text-sm font-medium text-gray-200">Zifana Aulia Putri</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 mt-20 py-8 text-center text-sm text-gray-500 bg-brandDark/50">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Kelas XI Desain Komunikasi Visual. All rights reserved.</p>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Beranda</a>
+                <a href="siswa.html" class="hover:text-white transition">Siswa</a>
+                <a href="nilai.html" class="hover:text-white transition">Nilai</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script untuk Toggle Tab Kelas -->
+    <script>
+        function switchTab(classId) {
+            // Sembunyikan semua konten kelas
+            document.querySelectorAll('.class-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Reset semua style tombol tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white";
+            });
+
+            // Tampilkan konten yang dipilih
+            document.getElementById('content-' + classId).classList.remove('hidden');
+
+            // Aktifkan style tombol yang diklik
+            const activeBtn = document.getElementById('btn-' + classId);
+            activeBtn.className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/20";
+        }
+    </script>
+</body>
+</html>
