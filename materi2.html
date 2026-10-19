@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Materi 2 - Produk Digital Canva Template</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0f1020',
+                        brandCard: '#181b33',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-glow-1 {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .bg-glow-2 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-gray-100 min-h-screen relative overflow-x-hidden font-sans">
+
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-glow-1 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-glow-2 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brandDark/80 border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                    <i class="fa-solid fa-palette text-white text-xl"></i>
+                </a>
+                <div>
+                    <h1 class="font-heading font-extrabold text-xl tracking-wide text-white">DKV <span class="text-gradient">PORTAL</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Modul Materi Pembelajaran</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="siswa.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-users"></i> Data Siswa</a>
+                <a href="nilai.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> Rekap Nilai</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-brandCard border border-gray-700 text-gray-200 font-semibold text-sm hover:bg-gray-800 transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+        
+        <!-- Header Modul -->
+        <div class="mb-10">
+            <div class="flex items-center gap-3 text-xs font-semibold text-pink-400 mb-3">
+                <span class="px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 uppercase tracking-wider">Modul Pembelajaran 02</span>
+                <span>•</span>
+                <span class="text-gray-400">Produk Kreatif & Kewirausahaan (DKV)</span>
+            </div>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4 leading-tight">
+                Studi Kasus Produk Digital: <span class="text-gradient">10.000+ Canva Template Siap Pakai</span>
+            </h1>
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                Pembahasan komprehensif mengenai analisis produk digital, nilai tambah (*Value Proposition*), kemudahan operasional, dan alur distribusi lisensi pada *platform e-commerce*.
+            </p>
+        </div>
+
+        <!-- Banner Referensi Produk -->
+        <section class="mb-12 bg-gradient-to-r from-purple-900/30 via-indigo-900/20 to-brandCard border border-purple-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Pratinjau Referensi Produk</span>
+                    <h3 class="font-heading font-bold text-2xl text-white">Canva Template 10.000+ Original</h3>
+                    <p class="text-sm text-gray-300">Produk digital siap pakai untuk efisiensi pembuatan konten dan desain profesional.</p>
+                </div>
+                <a href="https://shopee.co.id/CANVA-FREE-TEAMPLATE-10.000--i.1176671955.41861650310?extraParams=%7B%22display_model_id%22%3A300976821293%2C%22model_selection_logic%22%3A3%7D" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-semibold text-sm shadow-lg shadow-orange-600/30 transition flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-bag-shopping"></i> Lihat di Shopee <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Ringkasan Produk -->
+        <section class="mb-10 bg-brandCard border border-gray-800 rounded-2xl p-6 sm:p-8">
+            <h2 class="font-heading font-bold text-2xl text-white mb-4 flex items-center gap-3">
+                <span class="w-3 h-7 bg-pink-500 rounded-full inline-block"></span>
+                Deskripsi Produk Digital
+            </h2>
+            <p class="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
+                <strong class="text-white">CANVA TEMPLATE 10.000 + SIAP PAKAI ORIGINAL</strong> adalah produk aset digital yang dirancang khusus untuk menunjang pekerjaan harian maupun pembuatan konten media sosial. 
+            </p>
+            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                Produk ini memungkinkan pengguna menghasilkan karya visual yang menarik dan berstandar profesional tanpa memerlukan waktu lama. Menggunakan aset perancangan cepat ini sangat efektif menghemat waktu serta tenaga dalam memproduksi visual yang konsisten.
+            </p>
+        </section>
+
+        <!-- Grid 3 Pilar Utama (Keuntungan, Manfaat, Fitur) -->
+        <section class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Keuntungan -->
+            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-pink-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-face-smile-beam"></i>
+                </div>
+                <h3 class="font-heading font-bold text-lg text-white mb-2">Keuntungan Produk</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Pengguna dapat membuat desain visual yang estetis dan profesional secara instan, tanpa harus memiliki latar belakang keahlian teknis desain grafis yang rumit.
+                </p>
+            </div>
+
+            <!-- Manfaat -->
+            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <h3 class="font-heading font-bold text-lg text-white mb-2">Manfaat Efisiensi</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Membantu mempercepat alur kerja (*workflow*) harian bagi kreator, pemilik bisnis, maupun pelajar agar tetap dapat menjaga kualitas visual terbaik secara konsisten.
+                </p>
+            </div>
+
+            <!-- Fitur -->
+            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-blue-500/40 transition">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h3 class="font-heading font-bold text-lg text-white mb-2">Fitur Utama</h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Menyediakan paket kustomisasi *template* Canva siap pakai berjumlah 10.000+ variasi yang serbaguna, kompatibel, serta mudah disesuaikan dalam sekali klik.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Cara Penggunaan & Alur Layanan -->
+        <section class="mb-12 bg-brandCard border border-gray-800 rounded-2xl p-6 sm:p-8">
+            <h2 class="font-heading font-bold text-2xl text-white mb-6 flex items-center gap-3">
+                <span class="w-3 h-7 bg-indigo-500 rounded-full inline-block"></span>
+                Cara Penggunaan & Alur Akses Produk
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+                <!-- Langkah 1 -->
+                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
+                    <span class="w-8 h-8 rounded-lg bg-pink-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-pink-500/20">1</span>
+                    <h4 class="font-heading font-bold text-white text-base mb-2">Input Email Kontak</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Masukkan alamat email aktif kamu di kolom catatan pemesanan sebelum melakukan *Checkout* atau kirimkan via *Chat* penjual.
+                    </p>
+                </div>
+
+                <!-- Langkah 2 -->
+                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
+                    <span class="w-8 h-8 rounded-lg bg-purple-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-purple-500/20">2</span>
+                    <h4 class="font-heading font-bold text-white text-base mb-2">Penerimaan Akses</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Tim penjual akan memproses tautan udangan lisensi Canva / folder akses produk digital langsung ke email yang terdaftar.
+                    </p>
+                </div>
+
+                <!-- Langkah 3 -->
+                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
+                    <span class="w-8 h-8 rounded-lg bg-blue-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-blue-500/20">3</span>
+                    <h4 class="font-heading font-bold text-white text-base mb-2">Eksplorasi & Edit</h4>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Buka tautan di Canva dan kamu langsung dapat mengedit serta memanfaatkan puluhan ribu *template* berkualitas tinggi secara bebas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pertanyaan Diskusi Modul -->
+        <section class="bg-gradient-to-br from-brandCard to-indigo-950/30 border border-indigo-500/20 rounded-2xl p-6 sm:p-8">
+            <h3 class="font-heading font-bold text-xl text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-lightbulb text-amber-400"></i> Tugas Refleksi DKV:
+            </h3>
+            <ul class="space-y-3 text-sm text-gray-300 list-disc list-inside leading-relaxed">
+                <li>Analisis mengapa produk *digital asset* seperti Canva Template memiliki nilai ekonomi tinggi di pasar *e-commerce*.</li>
+                <li>Bagaimana strategi perancangan identitas merek (*branding*) agar produk *template* kita dapat bersaing di pasar digital?</li>
+                <li>Cobalah buat 1 contoh pola *template* postingan media sosial menggunakan perangkat lunak pilihanmu (Canva / Illustrator / Photoshop).</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 mt-20 py-8 text-center text-sm text-gray-500 bg-brandDark/50">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Kelas XI Desain Komunikasi Visual. All rights reserved.</p>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Beranda</a>
+                <a href="siswa.html" class="hover:text-white transition">Siswa</a>
+                <a href="nilai.html" class="hover:text-white transition">Nilai</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
