@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modul Materi 2 - Produk Digital Canva Template</title>
+    <title>Modul Pembelajaran - Panduan & 40 Tema Canva Template</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -33,6 +33,13 @@
         .bg-glow-2 {
             background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
         }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.2);
+        }
         .text-gradient {
             background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #3b82f6 100%);
             -webkit-background-clip: text;
@@ -55,7 +62,7 @@
                 </a>
                 <div>
                     <h1 class="font-heading font-extrabold text-xl tracking-wide text-white">DKV <span class="text-gradient">PORTAL</span></h1>
-                    <p class="text-xs text-gray-400 font-medium">Modul Materi Pembelajaran</p>
+                    <p class="text-xs text-gray-400 font-medium">Modul Pembelajaran Kelas 11</p>
                 </div>
             </div>
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -72,20 +79,18 @@
     </header>
 
     <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
         
         <!-- Header Modul -->
-        <div class="mb-10">
-            <div class="flex items-center gap-3 text-xs font-semibold text-pink-400 mb-3">
-                <span class="px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 uppercase tracking-wider">Modul Pembelajaran 02</span>
-                <span>•</span>
-                <span class="text-gray-400">Produk Kreatif & Kewirausahaan (DKV)</span>
-            </div>
+        <div class="mb-10 text-center max-w-3xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30 mb-3">
+                <i class="fa-solid fa-book-open"></i> Modul Praktikum Desain Produk Digital
+            </span>
             <h1 class="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4 leading-tight">
-                Studi Kasus Produk Digital: <span class="text-gradient">10.000+ Canva Template Siap Pakai</span>
+                Panduan Membuat <span class="text-gradient">Canva Template</span> & 40 Tema Kreatif
             </h1>
             <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
-                Pembahasan komprehensif mengenai analisis produk digital, nilai tambah (*Value Proposition*), kemudahan operasional, dan alur distribusi lisensi pada *platform e-commerce*.
+                Materi pembelajaran komprehensif untuk siswa Kelas 11 DKV dalam merancang, memproduksi, dan mengomersialkan aset digital profesional.
             </p>
         </div>
 
@@ -93,9 +98,9 @@
         <section class="mb-12 bg-gradient-to-r from-purple-900/30 via-indigo-900/20 to-brandCard border border-purple-500/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
                 <div class="space-y-2">
-                    <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Pratinjau Referensi Produk</span>
-                    <h3 class="font-heading font-bold text-2xl text-white">Canva Template 10.000+ Original</h3>
-                    <p class="text-sm text-gray-300">Produk digital siap pakai untuk efisiensi pembuatan konten dan desain profesional.</p>
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Referensi Pasar Marketplace</span>
+                    <h3 class="font-heading font-bold text-2xl text-white">Canva Free Template 10.000+ Siap Pakai</h3>
+                    <p class="text-sm text-gray-300">Contoh komersialisasi produk digital aset desain grafis di Shopee.</p>
                 </div>
                 <a href="https://shopee.co.id/CANVA-FREE-TEAMPLATE-10.000--i.1176671955.41861650310?extraParams=%7B%22display_model_id%22%3A300976821293%2C%22model_selection_logic%22%3A3%7D" 
                    target="_blank" 
@@ -106,105 +111,161 @@
             </div>
         </section>
 
-        <!-- Ringkasan Produk -->
-        <section class="mb-10 bg-brandCard border border-gray-800 rounded-2xl p-6 sm:p-8">
-            <h2 class="font-heading font-bold text-2xl text-white mb-4 flex items-center gap-3">
-                <span class="w-3 h-7 bg-pink-500 rounded-full inline-block"></span>
-                Deskripsi Produk Digital
-            </h2>
-            <p class="text-gray-300 leading-relaxed text-sm sm:text-base mb-4">
-                <strong class="text-white">CANVA TEMPLATE 10.000 + SIAP PAKAI ORIGINAL</strong> adalah produk aset digital yang dirancang khusus untuk menunjang pekerjaan harian maupun pembuatan konten media sosial. 
-            </p>
-            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-                Produk ini memungkinkan pengguna menghasilkan karya visual yang menarik dan berstandar profesional tanpa memerlukan waktu lama. Menggunakan aset perancangan cepat ini sangat efektif menghemat waktu serta tenaga dalam memproduksi visual yang konsisten.
-            </p>
-        </section>
-
-        <!-- Grid 3 Pilar Utama (Keuntungan, Manfaat, Fitur) -->
-        <section class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- Keuntungan -->
-            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-pink-500/40 transition">
-                <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-xl mb-4">
-                    <i class="fa-solid fa-face-smile-beam"></i>
+        <!-- Langkah-Langkah Membuat Canva Template -->
+        <section class="mb-12 bg-brandCard border border-gray-800 rounded-3xl p-6 sm:p-10">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
                 </div>
-                <h3 class="font-heading font-bold text-lg text-white mb-2">Keuntungan Produk</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">
-                    Pengguna dapat membuat desain visual yang estetis dan profesional secara instan, tanpa harus memiliki latar belakang keahlian teknis desain grafis yang rumit.
-                </p>
+                <div>
+                    <h2 class="font-heading font-bold text-2xl text-white">Cara Membuat Canva Template (Langkah demi Langkah)</h2>
+                    <p class="text-sm text-gray-400">Tahapan profesional merancang template digital siap edar</p>
+                </div>
             </div>
 
-            <!-- Manfaat -->
-            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500/40 transition">
-                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                </div>
-                <h3 class="font-heading font-bold text-lg text-white mb-2">Manfaat Efisiensi</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">
-                    Membantu mempercepat alur kerja (*workflow*) harian bagi kreator, pemilik bisnis, maupun pelajar agar tetap dapat menjaga kualitas visual terbaik secara konsisten.
-                </p>
-            </div>
-
-            <!-- Fitur -->
-            <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 relative overflow-hidden group hover:border-blue-500/40 transition">
-                <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <h3 class="font-heading font-bold text-lg text-white mb-2">Fitur Utama</h3>
-                <p class="text-sm text-gray-300 leading-relaxed">
-                    Menyediakan paket kustomisasi *template* Canva siap pakai berjumlah 10.000+ variasi yang serbaguna, kompatibel, serta mudah disesuaikan dalam sekali klik.
-                </p>
-            </div>
-
-        </section>
-
-        <!-- Cara Penggunaan & Alur Layanan -->
-        <section class="mb-12 bg-brandCard border border-gray-800 rounded-2xl p-6 sm:p-8">
-            <h2 class="font-heading font-bold text-2xl text-white mb-6 flex items-center gap-3">
-                <span class="w-3 h-7 bg-indigo-500 rounded-full inline-block"></span>
-                Cara Penggunaan & Alur Akses Produk
-            </h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
-                <!-- Langkah 1 -->
-                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
-                    <span class="w-8 h-8 rounded-lg bg-pink-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-pink-500/20">1</span>
-                    <h4 class="font-heading font-bold text-white text-base mb-2">Input Email Kontak</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Masukkan alamat email aktif kamu di kolom catatan pemesanan sebelum melakukan *Checkout* atau kirimkan via *Chat* penjual.
-                    </p>
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="bg-brandDark/50 border border-gray-800 rounded-2xl p-6">
+                    <h3 class="font-heading font-bold text-lg text-pink-400 mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-sm font-bold">1</span>
+                        Rancang Ide & Tentukan Niche (Target Pasar)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-300 ml-2">
+                        <li>Tentukan pengguna akhir template (pebisnis UMKM, kreator konten TikTok, guru, atau mahasiswa).</li>
+                        <li>Pilih gaya visual yang konsisten (misalnya *aesthetic pastel, dark cyber, minimalist, corporate clean,* atau *retro 90s*).</li>
+                    </ul>
                 </div>
 
-                <!-- Langkah 2 -->
-                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
-                    <span class="w-8 h-8 rounded-lg bg-purple-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-purple-500/20">2</span>
-                    <h4 class="font-heading font-bold text-white text-base mb-2">Penerimaan Akses</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Tim penjual akan memproses tautan udangan lisensi Canva / folder akses produk digital langsung ke email yang terdaftar.
-                    </p>
+                <!-- Step 2 -->
+                <div class="bg-brandDark/50 border border-gray-800 rounded-2xl p-6">
+                    <h3 class="font-heading font-bold text-lg text-purple-400 mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-sm font-bold">2</span>
+                        Gunakan Ukuran Kanvas yang Tepat
+                    </h3>
+                    <p class="text-sm text-gray-300 mb-3">Sesuaikan ukuran dengan platform tujuan:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300">
+                        <div class="bg-brandCard p-3 rounded-xl border border-gray-800"><strong>Instagram Post / Carousel:</strong> 1080 x 1080 / 1350 px</div>
+                        <div class="bg-brandCard p-3 rounded-xl border border-gray-800"><strong>Stories / TikTok / Reels Cover:</strong> 1080 x 1920 px</div>
+                        <div class="bg-brandCard p-3 rounded-xl border border-gray-800"><strong>Presentasi / Pitch Deck:</strong> 1920 x 1080 px (16:9)</div>
+                        <div class="bg-brandCard p-3 rounded-xl border border-gray-800"><strong>Pinterest Pin:</strong> 1000 x 1500 px</div>
+                    </div>
                 </div>
 
-                <!-- Langkah 3 -->
-                <div class="bg-brandDark/60 border border-gray-800 rounded-xl p-5 relative">
-                    <span class="w-8 h-8 rounded-lg bg-blue-500 text-white font-bold text-sm flex items-center justify-center mb-3 shadow-md shadow-blue-500/20">3</span>
-                    <h4 class="font-heading font-bold text-white text-base mb-2">Eksplorasi & Edit</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Buka tautan di Canva dan kamu langsung dapat mengedit serta memanfaatkan puluhan ribu *template* berkualitas tinggi secara bebas.
-                    </p>
+                <!-- Step 3 -->
+                <div class="bg-brandDark/50 border border-gray-800 rounded-2xl p-6">
+                    <h3 class="font-heading font-bold text-lg text-blue-400 mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-sm font-bold">3</span>
+                        Gunakan Elemen Bawaan Canva (Atau Desain Sendiri)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-300 ml-2">
+                        <li>Manfaatkan elemen gratis atau berlisensi Canva (*Content License Agreement* mengizinkan penjualan template asalkan dikustomisasi menjadi desain baru yang unik, bukan sekadar menjual ulang elemen mentah).</li>
+                        <li>Gunakan kombinasi *font* yang harmonis (maksimal 2–3 jenis *font* per desain).</li>
+                    </ul>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-brandDark/50 border border-gray-800 rounded-2xl p-6">
+                    <h3 class="font-heading font-bold text-lg text-teal-400 mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-sm font-bold">4</span>
+                        Kunci dan Atur Placeholder (Placeholder Text & Image)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-300 ml-2">
+                        <li>Kosongkan bagian teks atau berikan teks petunjuk seperti *"Ketik judul di sini"* agar pembeli mudah mengeditnya.</li>
+                        <li>Gunakan *Frame* (Bingkai Foto) untuk foto agar pembeli tinggal *drag-and-drop* gambar mereka sendiri.</li>
+                    </ul>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-brandDark/50 border border-gray-800 rounded-2xl p-6">
+                    <h3 class="font-heading font-bold text-lg text-amber-400 mb-2 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-sm font-bold">5</span>
+                        Dapatkan Tautan Template (Template Link)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-1.5 text-sm text-gray-300 ml-2">
+                        <li>Buka proyek desain di Canva, klik tombol <strong>Share (Bagikan)</strong> di sudut kanan atas.</li>
+                        <li>Pilih opsi <strong>Template Link</strong> (Bagikan sebagai template) yang tersedia pada akun Canva Pro atau Tim.</li>
+                        <li>Salin tautan tersebut untuk disematkan di dalam berkas PDF panduan pembeli.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Pertanyaan Diskusi Modul -->
-        <section class="bg-gradient-to-br from-brandCard to-indigo-950/30 border border-indigo-500/20 rounded-2xl p-6 sm:p-8">
-            <h3 class="font-heading font-bold text-xl text-white mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-lightbulb text-amber-400"></i> Tugas Refleksi DKV:
-            </h3>
-            <ul class="space-y-3 text-sm text-gray-300 list-disc list-inside leading-relaxed">
-                <li>Analisis mengapa produk *digital asset* seperti Canva Template memiliki nilai ekonomi tinggi di pasar *e-commerce*.</li>
-                <li>Bagaimana strategi perancangan identitas merek (*branding*) agar produk *template* kita dapat bersaing di pasar digital?</li>
-                <li>Cobalah buat 1 contoh pola *template* postingan media sosial menggunakan perangkat lunak pilihanmu (Canva / Illustrator / Photoshop).</li>
-            </ul>
+        <!-- 40 Tema Berbeda untuk Koleksi Template Canva -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="font-heading font-bold text-2xl text-white flex items-center gap-3">
+                        <span class="w-3 h-8 bg-purple-500 rounded-full inline-block"></span>
+                        40 Tema Berbeda untuk Koleksi Template Canva
+                    </h2>
+                    <p class="text-sm text-gray-400 mt-1">Daftar ide tema kreatif untuk proyek pengembangan portofolio digital siswa</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-brandCard rounded-lg text-purple-400 border border-gray-800">40 Tema</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <script>
+                    const themes = [
+                        ["Minimalist Aesthetic", "Desain bersih, warna monokrom/nude, ruang kosong (whitespace) luas."],
+                        ["Cyberpunk & Tech Neon", "Nuansa futuristik, warna gelap dengan garis neon terang (ungu, sian, fuchsia)."],
+                        ["Retro 90s & Vaporwave", "Estetika era 90-an, grid retro, warna pastel pudar, dan elemen pixel art."],
+                        ["Boho & Earth Tone", "Palet warna terakota, sage green, krem, dengan elemen daun botani organik."],
+                        ["Corporate & Clean Business", "Tata letak formal untuk laporan tahunan, proposal bisnis, dan infografis profesional."],
+                        ["Pastel Dreamy / Soft Pastel", "Warna-warna lembut yang cocok untuk beauty, skincare, dan akun lifestyle."],
+                        ["Bold & Vibrant Pop Art", "Warna-warna kontras tinggi yang mencolok untuk anak muda dan event musik."],
+                        ["Dark Moody & Luxury", "Kesan mewah, elegan, menggunakan latar belakang gelap dengan aksen emas (gold)."],
+                        ["Y2K Futuristic", "Tren awal tahun 2000-an, elemen metalik krom, bintang bersudut tajam, dan font bubble."],
+                        ["Eco Green & Nature", "Fokus pada isu lingkungan, kelestarian alam, dan produk organik."],
+                        ["Cafe & Culinary / F&B", "Desain khusus menu makanan, promosi diskon kuliner, dan ulasan kafe."],
+                        ["Real Estate & Property", "Tata letak elegan untuk pameran rumah, jual-beli properti, dan agen perumahan."],
+                        ["Fitness & Gym Motivation", "Desain penuh tenaga, tipografi tebal, untuk jadwal latihan dan tips kesehatan."],
+                        ["Education & E-Learning", "Slide presentasi interaktif, kuis, lembar kerja siswa, dan poster edukasi."],
+                        ["Fashion Lookbook & Store", "Katalog pakaian digital, diskon cuci gudang (flash sale), dan outfit of the day."],
+                        ["Wedding & Invitation Kit", "Desain undangan digital elegan, kartu ucapan, dan dekorasi acara pernikahan."],
+                        ["Podcast & Audio Branding", "Template sampul episode, kutipan narasumber (quote card), dan promosi audio."],
+                        ["Crypto & Web3 Financial", "Grafik analitik modern, kutipan finansial, dan pengumuman aset digital."],
+                        ["Skincare & Beauty Routine", "Desain produk kecantikan, testimoni, dan edukasi kandungan bahan aktif."],
+                        ["Travel & Adventure Journal", "Layout majalah liburan, tips itinerary, dan galeri foto destinasi wisata."],
+                        ["Mental Health & Self-Care", "Lembar refleksi diri, kalimat afirmasi positif, dan tips relaksasi."],
+                        ["Pet Shop & Animal Care", "Desain lucu untuk klinik hewan, produk peliharaan, dan adopsi hewan."],
+                        ["Music Festival & DJ Party", "Poster konser energik, jadwal line-up artis, dan promosi rilisan lagu."],
+                        ["Startup & Pitch Deck", "Template presentasi investor dengan struktur masalah, solusi, dan model bisnis."],
+                        ["Bakery & Pastry Delight", "Visual menggugah selera dengan warna cokelat hangat, krem, dan foto kue manis."],
+                        ["Podcast Quote Cards", "Kartu kutipan inspiratif khusus untuk cuplikan audio/video siniar."],
+                        ["Ramadan & Islamic Theme", "Desain Islami menyambut bulan suci, Idul Fitri, dan kutipan ayat/hadis."],
+                        ["Christmas & New Year Celebration", "Tema liburan musim dingin, dekorasi natal, dan resolusi tahun baru."],
+                        ["Halloween & Spooky Vibe", "Nuansa horor estetik, warna oranye gelap, labu, dan elemen misterius."],
+                        ["Baby Shower & Kids Birthday", "Ilustrasi ceria, warna pastel anak-anak, dan kartu undangan ulang tahun balita."],
+                        ["Library & Book Review", "Desain rekomendasi buku, catatan bacaan mingguan (reading journal)."],
+                        ["Automotive & Car Enthusiast", "Tema pameran otomotif, modifikasi mobil, dan ulasan kendaraan."],
+                        ["Gothic & Dark Academia", "Estetika klasik sastra tua, perpustakaan antik, dan warna cokelat tua/hitam."],
+                        ["Glow Up & Productivity Planner", "Templat perencana harian (daily planner), pelacak kebiasaan (habit tracker)."],
+                        ["Coffee Shop & Artisan Roastery", "Nuansa biji kopi, warna cokelat espresso, dan suasana kedai kopi hangat."],
+                        ["Handmade & Craft Artisan", "Desain untuk perajin lokal, rajutan, keramik, dan produk buatan tangan."],
+                        ["Charity & Non-Profit Campaign", "Desain penggalangan dana sosial, laporan donasi, dan kegiatan relawan."],
+                        ["Tarot & Astrologi Spiritual", "Ilustrasi zodiak, kartu tarot, ramalan bintang, dan estetika mistis."],
+                        ["Gaming & Esport Team", "Maskot tim game, jadwal turnamen streaming, dan sorotan pertandingan."],
+                        ["Gradient Fluid Art", "Perpaduan gradasi warna cair yang mengalir halus untuk latar belakang modern abstrak."]
+                    ];
+
+                    themes.forEach((theme, index) => {
+                        document.write(`
+                            <div class="card-hover bg-brandCard border border-gray-800 rounded-xl p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20"> Tema #${index + 1}</span>
+                                        <i class="fa-solid fa-paintbrush text-gray-600 text-sm"></i>
+                                    </div>
+                                    <h3 class="font-heading font-bold text-base text-white mb-2">${theme[0]}</h3>
+                                    <p class="text-xs text-gray-400 leading-relaxed">${theme[1]}</p>
+                                </div>
+                            </div>
+                        `);
+                    });
+                </script>
+
+            </div>
         </section>
 
     </main>
