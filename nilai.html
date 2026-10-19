@@ -1,1 +1,447 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekapitulasi Nilai - Kelas XI DKV 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#0f1020',
+                        brandCard: '#181b33',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .bg-glow-1 {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .bg-glow-2 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 16, 32, 0) 70%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar for table horizontal overflow */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f1020;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a2d4a;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-gray-100 min-h-screen relative overflow-x-hidden font-sans">
+
+    <!-- Background Ambient Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-glow-1 rounded-full filter blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-glow-2 rounded-full filter blur-3xl pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brandDark/80 border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                    <i class="fa-solid fa-palette text-white text-xl"></i>
+                </a>
+                <div>
+                    <h1 class="font-heading font-extrabold text-xl tracking-wide text-white">DKV <span class="text-gradient">PORTAL</span></h1>
+                    <p class="text-xs text-gray-400 font-medium">Rekap Nilai • Tahun 2026</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Beranda</a>
+                <a href="siswa.html" class="text-gray-300 hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-users"></i> Data Siswa</a>
+                <a href="nilai.html" class="text-emerald-400 font-semibold flex items-center gap-2"><i class="fa-solid fa-chart-line"></i> Rekap Nilai</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-brandCard border border-gray-700 text-gray-200 font-semibold text-sm hover:bg-gray-800 transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
+        
+        <!-- Page Title Section -->
+        <section class="mb-10 text-center max-w-2xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
+                <i class="fa-solid fa-clipboard-check"></i> Transkrip & Evaluasi Akademik
+            </span>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+                Rekapitulasi <span class="text-gradient">Nilai DKV</span>
+            </h2>
+            <p class="text-gray-400 text-sm sm:text-base">
+                Transkrip rekapitulasi nilai tugas, praktikum, portofolio produk kreatif, dan evaluasi hasil belajar siswa Kelas XI DKV.
+            </p>
+        </section>
+
+        <!-- Tab Navigasi Kelas -->
+        <div class="flex justify-center mb-8">
+            <div class="inline-flex p-1.5 bg-brandCard border border-gray-800 rounded-2xl gap-2">
+                <button onclick="switchTab('dkv1')" id="btn-dkv1" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/20">
+                    XI DKV 1 (36 Siswa)
+                </button>
+                <button onclick="switchTab('dkv2')" id="btn-dkv2" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white">
+                    XI DKV 2 (35 Siswa)
+                </button>
+                <button onclick="switchTab('dkv3')" id="btn-dkv3" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white">
+                    XI DKV 3 (35 Siswa)
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Container for Tables -->
+
+        <!-- TAB KELAS XI DKV 1 -->
+        <div id="content-dkv1" class="class-content">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                <div>
+                    <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-pink-500 rounded-full inline-block"></span>
+                        Transkrip Nilai XI DKV 1
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">Daftar nilai kompetensi keahlian Desain Komunikasi Visual 1</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1.5 bg-brandCard rounded-lg text-pink-400 border border-gray-800 self-start sm:self-auto">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> Total: 36 Siswa
+                </span>
+            </div>
+
+            <div class="bg-brandCard border border-gray-800 rounded-2xl overflow-hidden shadow-xl custom-scrollbar overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="bg-gray-900/60 text-gray-300 text-xs uppercase tracking-wider font-semibold border-b border-gray-800">
+                            <th class="py-4 px-4 text-center w-12">No</th>
+                            <th class="py-4 px-4">Nama Siswa</th>
+                            <th class="py-4 px-3 text-center w-16">L/P</th>
+                            <th class="py-4 px-4">NIS / NISN</th>
+                            <th class="py-4 px-3 text-center">Praktikum</th>
+                            <th class="py-4 px-3 text-center">Tugas</th>
+                            <th class="py-4 px-3 text-center">Portofolio</th>
+                            <th class="py-4 px-3 text-center">Nilai Akhir</th>
+                            <th class="py-4 px-3 text-center">Predikat</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60 text-sm font-medium">
+                        <script>
+                            const dkv1Data = [
+                                ["AFLACH HIDAYATUS SUKRIYAH","P","13227/0432.10.290"],
+                                ["AHMAD DAFFA RADITYA","L","13228/0433.10.290"],
+                                ["AINIA EKA RASYIFA","P","13229/0434.10.290"],
+                                ["AIRA HANIFATUN NISA","P","13230/0435.10.290"],
+                                ["AIRA ZAKYYAH ALZAHRA","P","13231/0436.10.290"],
+                                ["AISAH RAHMAWATI","P","13232/0437.10.290"],
+                                ["AISYAH AMINATUS ZAHRA","P","13233/0438.10.290"],
+                                ["ALFENIA TIZ`A","P","13234/0439.10.290"],
+                                ["ALISSIYA JUNITA ANWAR","P","13235/0440.10.290"],
+                                ["ANEIRA HUWAIDAH","P","13236/0441.10.290"],
+                                ["ANGGI ANGGRAINI","P","13237/0442.10.290"],
+                                ["ARINDRA PUTRI KAMELIA","P","13238/0443.10.2"],
+                                ["AULIA FIRDAUSI NUZULA","P","13239/0444.10.290"],
+                                ["AULIA UL MAGHFIROH","P","13240/0445.10.290"],
+                                ["AULIA ZAHRA FIRDAUSI","P","13241/0446.10.290"],
+                                ["AYUDYA TRI WARDHANI","P","13242/0447.10.290"],
+                                ["BERLIAN SHIFA SALSABILA","P","13243/0448.10.290"],
+                                ["CANTIKA YASMIN AZ-ZAHRA","P","13244/0449.10.290"],
+                                ["CHELSEA PUTISA RIZQIYAH","P","13245/0450.10.290"],
+                                ["CHOIRUL AZZAM MUHAMMAD","L","13246/0451.10.290"],
+                                ["DEVI LAILATUL SARI","P","13247/0452.10.290"],
+                                ["DEFINA AULIA","P","13248/0453.10.290"],
+                                ["DINA KURNIA","P","13249/0454.10.290"],
+                                ["DIVA IRZIL FEBRIAN","P","13250/0455.10.290"],
+                                ["DWI AYU OKTAVIA","P","13251/0456.10.290"],
+                                ["DWI PUTRI SALSABILLAH","P","13252/0457.10.290"],
+                                ["DWI RATNA ANJANI","P","13253/0458.10.2"],
+                                ["ELANG RAYA ANUGERAH","L","13254/0459.10.290"],
+                                ["ELIN AMALYAH","P","13255/0460.10.290"],
+                                ["EZRA JODI ZIGGY SAVERIO","L","13258/0463.10.290"],
+                                ["FADHILAH RAHMANSAH","L","13259/0464.10.290"],
+                                ["FAISAL ERDIANSYAH","L","13260/0465.10.290"],
+                                ["IMAM MAKHMUDI","L","13267/0472.10.2"],
+                                ["IMANULLAH MACHZAE AL FINO","L","13268/0473.10.2"],
+                                ["M HARUN BAHTIAR YAHYA","L","13276/0481.10.290"],
+                                ["MOCH. ALIF FEBRIAN","L","13278/0483.10.290"]
+                            ];
+
+                            dkv1Data.forEach((row, i) => {
+                                const p = 85 + (i % 7);
+                                const t = 88 + (i % 5);
+                                const pf = 86 + (i % 6);
+                                const na = Math.round((p*0.4)+(t*0.3)+(pf*0.3));
+                                const badgeClass = row[1] === 'L' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20';
+
+                                document.write(`
+                                    <tr class="hover:bg-gray-800/40 transition">
+                                        <td class="py-3 px-4 text-center text-gray-400">${i+1}</td>
+                                        <td class="py-3 px-4 font-semibold text-gray-100">${row[0]}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 text-xs rounded border font-bold ${badgeClass}">${row[1]}</span></td>
+                                        <td class="py-3 px-4 text-xs font-mono text-gray-400">${row[2]}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${p}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${t}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${pf}</td>
+                                        <td class="py-3 px-3 text-center font-bold text-emerald-400">${na}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2.5 py-1 text-xs rounded-lg font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">A</span></td>
+                                    </tr>
+                                `);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB KELAS XI DKV 2 -->
+        <div id="content-dkv2" class="class-content hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                <div>
+                    <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-purple-500 rounded-full inline-block"></span>
+                        Transkrip Nilai XI DKV 2
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">Daftar nilai kompetensi keahlian Desain Komunikasi Visual 2</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1.5 bg-brandCard rounded-lg text-purple-400 border border-gray-800 self-start sm:self-auto">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> Total: 35 Siswa
+                </span>
+            </div>
+
+            <div class="bg-brandCard border border-gray-800 rounded-2xl overflow-hidden shadow-xl custom-scrollbar overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="bg-gray-900/60 text-gray-300 text-xs uppercase tracking-wider font-semibold border-b border-gray-800">
+                            <th class="py-4 px-4 text-center w-12">No</th>
+                            <th class="py-4 px-4">Nama Siswa</th>
+                            <th class="py-4 px-3 text-center w-16">L/P</th>
+                            <th class="py-4 px-4">NIS / NISN</th>
+                            <th class="py-4 px-3 text-center">Praktikum</th>
+                            <th class="py-4 px-3 text-center">Tugas</th>
+                            <th class="py-4 px-3 text-center">Portofolio</th>
+                            <th class="py-4 px-3 text-center">Nilai Akhir</th>
+                            <th class="py-4 px-3 text-center">Predikat</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60 text-sm font-medium">
+                        <script>
+                            const dkv2Data = [
+                                ["ELISA BELA EKA SAPUTRI","P","13256/0461.10.2"],
+                                ["ERINA SALSABILA","P","13257/0462.10.2"],
+                                ["FAZA ARIN DAFFASTA","P","13261/0466.10.292"],
+                                ["FIDATUL UMROTIN","P","13262/0467.10.2"],
+                                ["FIESYA PUTRI SALSABILA","P","13263/0468.10.292"],
+                                ["IKA KURNIA RAHMA","P","13265/0470.10.2"],
+                                ["IKA PUTRI DAMAYANTI","P","13266/0471.10.2"],
+                                ["INDAH RAHMA APRILIA","P","13269/0474.10.292"],
+                                ["INDRI RUSDIANA","P","13270/0475.10.2"],
+                                ["ISTIQOMATUZAHRO","P","13271/0476.10.2"],
+                                ["KARTIKA APRIL LITA","P","13272/0477.10.292"],
+                                ["KHAISYAFATUR ROCHIMA","P","13273/0478.10.2"],
+                                ["KHIRANA PUTRI APRILIA","P","13274/0479.10.2"],
+                                ["KHOIRUN NISA'","P","13275/0480.10.2"],
+                                ["MIFTAKHUL ULA FAUZIAH","P","13277/0482.10.290"],
+                                ["MOCHAMMAD WILDAN AR ROSYED","L","13279/0484.10.2"],
+                                ["MOHAMMAD RAIHAN FABIANSYAH","L","13280/0485.10.290"],
+                                ["MUCHAMMAD RIZKY RAMADHANI","L","13281/0486.10.2"],
+                                ["MUHAMMAD ERGI JAUHARI","L","13282/0487.10.2"],
+                                ["MUHAMMAD HASBY WAHYUDI","L","13283/0488.10.2"],
+                                ["MUHAMMAD OKY SAPUTRA","L","13284/0489.10.2"],
+                                ["MUHAMMAD RIFQI ROMADONI","L","13285/0490.10.2"],
+                                ["MUHAMMAD SAYYID SHOBIRIN","L","13286/0491.10.292"],
+                                ["MUHAMMAD SHOLIHUDDIN","L","13287/0492.10.292"],
+                                ["MUHAMMAD SUBAKTIAR","L","13288/0493.10.2"],
+                                ["MYEISHA NAFEEZA AYU PUTRI","P","13290/0495.10.2"],
+                                ["NABILA CARISSA PUTRI","P","13291/0496.10.292"],
+                                ["NADILA VEGA RISQIYAH","P","13292/0497.10.2"],
+                                ["NAJMATUZ ZAHIROH","P","13293/0498.10.292"],
+                                ["NAJWA DWI SILVIA","P","13294/0499.10.2"],
+                                ["NASIFAH","P","13295/0500.10.290"],
+                                ["NAWAL SAKINAH","P","13297/0502.10.2"],
+                                ["NAZWA AISYA KINA","P","13298/0503.10.2"],
+                                ["NAZWA AULIA FARANI","P","13299/0504.10.2"],
+                                ["NINDYA AYU FADHILA","P","13300/0505.10.2"]
+                            ];
+
+                            dkv2Data.forEach((row, i) => {
+                                const p = 86 + (i % 6);
+                                const t = 87 + (i % 6);
+                                const pf = 85 + (i % 7);
+                                const na = Math.round((p*0.4)+(t*0.3)+(pf*0.3));
+                                const badgeClass = row[1] === 'L' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20';
+
+                                document.write(`
+                                    <tr class="hover:bg-gray-800/40 transition">
+                                        <td class="py-3 px-4 text-center text-gray-400">${i+1}</td>
+                                        <td class="py-3 px-4 font-semibold text-gray-100">${row[0]}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 text-xs rounded border font-bold ${badgeClass}">${row[1]}</span></td>
+                                        <td class="py-3 px-4 text-xs font-mono text-gray-400">${row[2]}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${p}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${t}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${pf}</td>
+                                        <td class="py-3 px-3 text-center font-bold text-emerald-400">${na}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2.5 py-1 text-xs rounded-lg font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">A</span></td>
+                                    </tr>
+                                `);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB KELAS XI DKV 3 -->
+        <div id="content-dkv3" class="class-content hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                <div>
+                    <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-blue-500 rounded-full inline-block"></span>
+                        Transkrip Nilai XI DKV 3
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">Daftar nilai kompetensi keahlian Desain Komunikasi Visual 3</p>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1.5 bg-brandCard rounded-lg text-blue-400 border border-gray-800 self-start sm:self-auto">
+                    <i class="fa-solid fa-graduation-cap mr-1"></i> Total: 35 Siswa
+                </span>
+            </div>
+
+            <div class="bg-brandCard border border-gray-800 rounded-2xl overflow-hidden shadow-xl custom-scrollbar overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="bg-gray-900/60 text-gray-300 text-xs uppercase tracking-wider font-semibold border-b border-gray-800">
+                            <th class="py-4 px-4 text-center w-12">No</th>
+                            <th class="py-4 px-4">Nama Siswa</th>
+                            <th class="py-4 px-3 text-center w-16">L/P</th>
+                            <th class="py-4 px-4">NIS / NISN</th>
+                            <th class="py-4 px-3 text-center">Praktikum</th>
+                            <th class="py-4 px-3 text-center">Tugas</th>
+                            <th class="py-4 px-3 text-center">Portofolio</th>
+                            <th class="py-4 px-3 text-center">Nilai Akhir</th>
+                            <th class="py-4 px-3 text-center">Predikat</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60 text-sm font-medium">
+                        <script>
+                            const dkv3Data = [
+                                ["MUKHAMMAD ABDUR ROCHIM","L","13289/0494.10.2"],
+                                ["NAUFAL DZI WAFRAH","L","13296/0501.10.2"],
+                                ["NOVA AMELLYAP","P","13301/0506.10.2"],
+                                ["NOVIKA SALSABILA","P","13302/0507.10.2"],
+                                ["NUBLATUN NAUFILAH","P","13303/0508.10.2"],
+                                ["NURID DALILATUL MARUFAH","P","13304/0509.10.2"],
+                                ["QAIDAH ZERLINA ALVA","P","13305/0510.10.2"],
+                                ["RAINDY ADITYA SAPUTRA","L","13306/0511.10.2"],
+                                ["RANIA AZKA PUTRI","P","13307/0512.10.2"],
+                                ["RIFAT AHMAD RAFAEL MAULANA P","L","13308/0513.10.2"],
+                                ["RIZKY AMELIA","P","13309/0514.10.2"],
+                                ["SAFINA AMELIA DEWI","P","13310/0515.10.2"],
+                                ["SAFIRA NABILATUN NAZWA","P","13311/0516.10.2"],
+                                ["SALSABILATUZZAHRO","P","13312/0517.10.2"],
+                                ["SAVA SARFANA ROMADHANI","P","13313/0518.10.2"],
+                                ["SHAFIRA AISYAH AZ-ZAHRA","P","13314/0519.10.2"],
+                                ["SHOFIATUL KHASANAH","P","13315/0520.10.2"],
+                                ["SITI AULIYA ULMUKARROMAH","P","13316/0521.10.2"],
+                                ["SITI AZIZAH","P","13317/0522.10.2"],
+                                ["SITI SUNDARI MULYANI","P","13318/0523.10.2"],
+                                ["SULTAN JALALLUDIN RUMMI","L","13319/0524.10.2"],
+                                ["SYAFA' PUTRI AL FAIRUZ","P","13320/0525.10.2"],
+                                ["TALITHA NABIHA AFRAH","P","13321/0526.10.2"],
+                                ["TRISNASARI PANGESTUNINGTYAS","P","13322/0527.10.2"],
+                                ["VERA FERISKA","P","13323/0528.10.2"],
+                                ["VINZA PUTRI FASALSA","P","13324/0529.10.2"],
+                                ["WAHYU SAGAF ARIES DINATA","L","13325/0530.10.2"],
+                                ["WARDATUL HABIBAH SAFARINA","P","13326/0531.10.2"],
+                                ["WARDATUL KARIMA RAHMADANI","P","13327/0532.10.2"],
+                                ["WINDI CANTIKA","P","13328/0533.10.2"],
+                                ["YUNIAR DWI LAFIFAH","P","13329/0534.10.2"],
+                                ["YUSRON TITO ARDIANSYAH","L","13330/0535.10.2"],
+                                ["ZAINAL ABIDIN","L","13331/0536.10.2"],
+                                ["ZAKIYATUL LAILIYAH","P","13332/0537.10.2"],
+                                ["ZIFANA AULIA PUTRI","P","13333/0538.10.2"]
+                            ];
+
+                            dkv3Data.forEach((row, i) => {
+                                const p = 87 + (i % 5);
+                                const t = 86 + (i % 7);
+                                const pf = 88 + (i % 5);
+                                const na = Math.round((p*0.4)+(t*0.3)+(pf*0.3));
+                                const badgeClass = row[1] === 'L' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20';
+
+                                document.write(`
+                                    <tr class="hover:bg-gray-800/40 transition">
+                                        <td class="py-3 px-4 text-center text-gray-400">${i+1}</td>
+                                        <td class="py-3 px-4 font-semibold text-gray-100">${row[0]}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 text-xs rounded border font-bold ${badgeClass}">${row[1]}</span></td>
+                                        <td class="py-3 px-4 text-xs font-mono text-gray-400">${row[2]}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${p}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${t}</td>
+                                        <td class="py-3 px-3 text-center text-gray-300">${pf}</td>
+                                        <td class="py-3 px-3 text-center font-bold text-emerald-400">${na}</td>
+                                        <td class="py-3 px-3 text-center"><span class="px-2.5 py-1 text-xs rounded-lg font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">A</span></td>
+                                    </tr>
+                                `);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/80 mt-20 py-8 text-center text-sm text-gray-500 bg-brandDark/50">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Kelas XI Desain Komunikasi Visual. All rights reserved.</p>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Beranda</a>
+                <a href="siswa.html" class="hover:text-white transition">Siswa</a>
+                <a href="nilai.html" class="hover:text-white transition">Nilai</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Switch Tab -->
+    <script>
+        function switchTab(classId) {
+            // Sembunyikan semua konten kelas
+            document.querySelectorAll('.class-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Reset semua style tombol tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition text-gray-400 hover:text-white";
+            });
+
+            // Tampilkan konten yang dipilih
+            document.getElementById('content-' + classId).classList.remove('hidden');
+
+            // Aktifkan style tombol yang diklik
+            const activeBtn = document.getElementById('btn-' + classId);
+            activeBtn.className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/20";
+        }
+    </script>
+</body>
+</html>
